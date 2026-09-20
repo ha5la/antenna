@@ -12,13 +12,13 @@ SEGS = 15
 DRIVEN = 1
 
 
-def deck(halflen, radius, title, freqs=(420.0, 21, 1.0), full_pattern=True):
+def deck(halflen, radius, title, freqs=(420.0, 21, 1.0), full_pattern=True, spacing=None):
     f0, nf, df = freqs
     L = ["CM " + title,
          f"CM Element diameter {2000*radius:.2f} mm; elements insulated above boom, no boom correction",
          f"CM {SEGS} segments per element, extended thin-wire kernel, free space",
          "CE"]
-    for i, (x, h) in enumerate(zip(SPACING, halflen)):
+    for i, (x, h) in enumerate(zip(spacing or SPACING, halflen)):
         L.append(f"GW {i+1:3d} {SEGS:3d} {x: .5f} {-h: .5f}  0.00000 "
                  f"{x: .5f} {h: .5f}  0.00000 {radius: .6f}")
     L += ["GE 0", "EK",
