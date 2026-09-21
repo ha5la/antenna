@@ -22,10 +22,34 @@ Radiator is **10 mm** in both columns. Pick one parasitic diameter.
 | D7 | 1780 | 279 | 274 |
 | D8 | 1995 | 274 | 269 |
 
-All mm. Totals: 8 mm column needs 2.596 m of 8 × 1 plus 314 mm of 10 × 1.
-10 mm column needs 2.863 m of 10 × 1 — one 4 m stick does the lot.
+All mm. Positions are measured **from the reflector**, not from the end of the boom.
 
-Make the boom ~2.1 m so the Ref and D8 are not right at the tube ends.
+## Order and cut plan
+
+Drawn tube comes in 4 m lengths; sin-us will cut. Allowing 2 mm of kerf per cut:
+
+**8 mm build** — nothing over 2 m:
+
+| Order | Cut into |
+|:--|:--|
+| 8 × 1, 2 m | 330 + 302 + 291 + 285 + 279 + 277 (1776 mm used) |
+| 8 × 1, 1 m | 274 + 274 + 274 (828 mm used) |
+| 10 × 1, 0.5 m | radiator 314 mm |
+
+**All-10 mm build:**
+
+| Order | Cut into |
+|:--|:--|
+| 10 × 1, 2 m | 327 + 315 + 300 + 287 + 281 + 274 (1796 mm used) |
+| 10 × 1, 1.2 m | 272 + 269 + 269 + 269 (1087 mm used) |
+
+A single 3 m length also holds all ten (2883 mm used, 117 mm spare) but leaves no room
+for a mistake.
+
+**Boom:** 20 × 20 square, about 2.05–2.10 m. DK7ZB specifies a 2.00 m boom and the last
+director sits at 1995 mm, so the element span itself is 1995 — but the reflector and D8
+clamps need material under them, so allow 30–50 mm of boom beyond each end element.
+The boom is the only item over 2 m.
 
 ## DK7ZB match
 
