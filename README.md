@@ -110,13 +110,18 @@ DK7ZB's claim of 13,1 dBd = 15.25 dBi is confirmed: the model gives 15.24 dBi at
 | D7 | 1780 | 274 |
 | D8 | 1995 | 269 |
 
-All in mm. Buildable straight from sin-us.hu drawn `10 × 1` tube — no retune, unlike
-the OWA. DK7ZB also publishes 8 mm and 6 mm tables, but they model resonant high (SWR
-1.29 and 1.53 at 432 against 1.12 for 10 mm), so use 10 mm.
+All in mm. Buildable straight from sin-us.hu drawn tube — no retune, unlike the OWA.
 
-**Boom mounting matters here.** These lengths assume elements insulated *above* the
-boom. Pushing them through a metal boom, even in insulating sleeves, needs roughly
-15–25% of the boom diameter added to each element.
+DK7ZB publishes three parasitic diameters; **the radiator is always 10 mm** in all of
+them. All three model equivalently (15.2–15.4 dBi, SWR under 1.25 across 430–436), so
+pick on what you can buy. His standard for this series is 8 mm parasitics with a 10 mm
+radiator — that is `dk7zb_10el_70cm_8mm.nec`.
+
+| Parasitics | SWR @433 | Gain @433 | F/B @433 |
+|:--|---:|---:|---:|
+| 10 mm | 1.10 | 15.29 dBi | 27.9 dB |
+| 8 mm  | 1.03 | 15.30 | 28.7 |
+| 6 mm  | 1.02 | 15.28 | 27.7 |
 
 ## Modelled performance
 
@@ -159,6 +164,45 @@ Quarter wave at 432 MHz:
 
 Measure your cable's actual velocity factor rather than trusting the datasheet, and trim
 with an analyser.
+
+## Element mounting and boom correction
+
+DK7ZB's published lengths assume **polyamide clamps (Konni type) holding the element
+2–3 mm clear above the boom**, fastened with a 3 mm stainless screw. Built that way they
+need **no correction** — cut to the table.
+
+Any other mounting needs the DL6WU correction, which DK7ZB tabulates. For a **round**
+boom, added to the full element length:
+
+| Boom Ø | Elements through boom, metal contact | Insulated through boom, or bonded directly on top |
+|---:|---:|---:|
+| 10 mm | +3 mm | +1.5 mm |
+| 15 mm | +7 mm | +3.5 mm |
+| 20 mm | +11 mm | +5.5 mm |
+
+Square boom behaves like a round boom roughly 18% larger (SM5BSZ). The correction is
+*added* — a metal boom makes an element behave electrically short, so an uncorrected
+build resonates high.
+
+At 70 cm this is not a detail: +11 mm on a 280 mm director is 3.9%, about 17 MHz at
+435 MHz. The same boom on 2 m costs only ~4 mm, or 0.4% — which is why a mounting error
+that is invisible on 2 m ruins a 70 cm antenna.
+
+The screw must not form a metal path from element to boom. In the clamp method it
+fastens the element into the plastic body only.
+
+## The DK7ZB match — his own figures
+
+Quarter-wave lengths for 432 MHz, from DK7ZB:
+
+| Cable | V | Length |
+|:--|---:|---:|
+| Full-PE (RG-59) | 0.67 | 115 mm |
+| Foam-PE (SAT cable) | 0.82 | 141 mm |
+| PTFE (RG-179) | 0.70 | 120 mm |
+
+He warns that cheap TV coax is often not 75 Ω — measured examples came out at 68, 70 and
+80 Ω. Use decent cable with good screening.
 
 ## Versus the SC42014W
 
