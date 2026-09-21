@@ -171,18 +171,23 @@ DK7ZB's published lengths assume **polyamide clamps (Konni type) holding the ele
 2–3 mm clear above the boom**, fastened with a 3 mm stainless screw. Built that way they
 need **no correction** — cut to the table.
 
-Any other mounting needs the DL6WU correction, which DK7ZB tabulates. For a **round**
-boom, added to the full element length:
+Any other mounting needs the DL6WU correction, which DK7ZB tabulates as
+`C = (12.5975 - 114.5 B) B²` per element half, C and boom diameter B in wavelengths.
+Added to the full element length:
 
-| Boom Ø | Elements through boom, metal contact | Insulated through boom, or bonded directly on top |
+| Boom | Elements through boom, metal contact | Insulated through boom, or bonded directly on top |
 |---:|---:|---:|
 | 10 mm | +3 mm | +1.5 mm |
 | 15 mm | +7 mm | +3.5 mm |
 | 20 mm | +11 mm | +5.5 mm |
 
-Square boom behaves like a round boom roughly 18% larger (SM5BSZ). The correction is
-*added* — a metal boom makes an element behave electrically short, so an uncorrected
-build resonates high.
+DK7ZB does not say whether these are round or square booms, and his own antennas use
+square 15×15 or 20×20. SM5BSZ finds a square boom behaves like a round one ~18% larger,
+so if the table is for round booms a 20×20 square would want somewhat more than +11 mm.
+Another reason to use the clamps and sidestep the question.
+
+The correction is *added* — a metal boom makes an element behave electrically short, so
+an uncorrected build resonates high.
 
 At 70 cm this is not a detail: +11 mm on a 280 mm director is 3.9%, about 17 MHz at
 435 MHz. The same boom on 2 m costs only ~4 mm, or 0.4% — which is why a mounting error
