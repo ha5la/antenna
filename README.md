@@ -167,6 +167,14 @@ just on the radiator.
 The same antenna cut to the uncorrected table resonated at 438.4 MHz — 5 MHz high. That
 is what sized the correction.
 
+NanoVNA sweeps, all taken indoors:
+
+| File | Sweep |
+|:--|:--|
+| `meas-uncorrected.png` | uncorrected lengths, 438.55 MHz, 50.36 - 0.36j |
+| `meas-uncorrected-noscrews.png` | same, every mounting screw removed, 438.40 MHz |
+| `meas-corrected.png` | +5.5 mm, 433.675 MHz, 51.15 + 2.57j |
+
 Two things this does **not** establish:
 
 - The skirts are steeper than modelled (430: 1.51 against 1.25; 438: 1.85 against 1.2)
