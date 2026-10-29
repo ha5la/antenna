@@ -90,8 +90,8 @@ length sets. G0KSC's "minor errors will not have a big impact" holds.
 `dk7zb_10el_70cm.nec` — 10 elements on a 2.0 m boom, designed for 432 MHz.
 Source: <https://www.qsl.net/dk7zb/70cm/10.htm>
 
-Modelled with the same method as the OWA (15 segments/element, `EK`, free space,
-elements insulated above the boom). Converged; 21 segments changes nothing.
+Modelled with the same method as the OWA (15 segments/element, `EK`, free space, no
+boom). Converged; 21 segments changes nothing.
 
 DK7ZB's claim of 13,1 dBd = 15.25 dBi is confirmed: the model gives 15.24 dBi at 432 MHz.
 
@@ -110,7 +110,8 @@ DK7ZB's claim of 13,1 dBd = 15.25 dBi is confirmed: the model gives 15.24 dBi at
 | D7 | 1780 | 274 |
 | D8 | 1995 | 269 |
 
-All in mm. Buildable straight from sin-us.hu drawn tube — no retune, unlike the OWA.
+All in mm, and these are DK7ZB's published lengths — add the mounting correction below
+before you cut. Buildable straight from sin-us.hu drawn tube — no retune, unlike the OWA.
 
 DK7ZB publishes three parasitic diameters; **the radiator is always 10 mm** in all of
 them. All three model equivalently (15.2–15.4 dBi, SWR under 1.25 across 430–436), so
@@ -147,6 +148,37 @@ repeater antenna.
 The `.nec` file feeds the radiator directly, so xnec2c will show SWR against 50 Ω and
 look wrong — **set the SWR reference impedance to 28 Ω** in xnec2c, or read the table above.
 
+## Measured
+
+One build: 20 × 20 boom, Konni clamps 2–3 mm clear, 8 mm parasitics, 10 mm radiator,
+cut to the table **plus the +5.5 mm boom correction**.
+
+| | measured | model |
+|:--|:--|:--|
+| Z at 433 MHz, bare radiator | 27.4 - 1.4j | 27.4 - 1.8j |
+| SWR minimum | 1.06 at 433.8 | 1.01 at 433.5 |
+| SWR 432 / 433 / 435 | 1.24 / 1.12 / 1.18 | 1.11 / 1.03 / 1.13 |
+
+Radiator Z is de-embedded from 51.15 + 2.57j measured at the socket, through an ideal
+37.5 Ω quarter wave. Both parts agree with the model to a tenth of an ohm, and the
+driving-point resistance of a Yagi depends on coupling to the whole director string, not
+just on the radiator.
+
+The same antenna cut to the uncorrected table resonated at 438.4 MHz — 5 MHz high. That
+is what sized the correction.
+
+Two things this does **not** establish:
+
+- The skirts are steeper than modelled (430: 1.51 against 1.25; 438: 1.85 against 1.2)
+  and there is a local maximum near 426 MHz that a free-space model behind an ideal
+  quarter-wave line does not reproduce. Fitting element length, transformer Z₀ and
+  transformer design frequency to the whole curve does not converge on anything credible.
+  Band centre agrees; the edges are unvalidated. The real two-coax transformer is the
+  likeliest culprit.
+- The pattern. SWR constrains how the directors load the radiator, not how they phase it,
+  so the 15.3 dBi and 28 dB worst rear lobe remain modelled figures. That needs a
+  front-to-back measurement against a distant source.
+
 ## The DK7ZB match
 
 Two 75 Ω coax quarter-wave lines in parallel = 37.5 Ω, and 37.5² / 28 = 50.2 Ω.
@@ -167,34 +199,40 @@ with an analyser.
 
 ## Element mounting and boom correction
 
-DK7ZB's published lengths assume **polyamide clamps (Konni type) holding the element
-2–3 mm clear above the boom**, fastened with a 3 mm stainless screw. Built that way they
-need **no correction** — cut to the table.
+The lengths above are DK7ZB's published figures, before any mounting correction. The
+model is free space with no boom, so the correction applies on top of it either way.
 
-Any other mounting needs the DL6WU correction, which DK7ZB tabulates as
-`C = (12.5975 - 114.5 B) B²` per element half, C and boom diameter B in wavelengths.
-Added to the full element length:
+What sets the correction is how far the element stands off the boom, **not** whether
+there is a metal path to it. At 70 cm an 8 mm element 2–3 mm clear of a 20 mm boom is
+coupled to it hard enough to behave as if bonded: on a built antenna, pulling every
+mounting screw so that nothing touched the boom moved resonance by 0.15 MHz. Getting
+away with no correction needs the element standing clear by something like a boom width.
 
-| Boom | Elements through boom, metal contact | Insulated through boom, or bonded directly on top |
+DL6WU correction, which DK7ZB tabulates as `C = (12.5975 - 114.5 B) B²` per element
+half, C and boom diameter B in wavelengths. Added to the **full** element length:
+
+| Boom | Through boom, metal contact | Insulated through boom, or standing within a few mm of it |
 |---:|---:|---:|
 | 10 mm | +3 mm | +1.5 mm |
 | 15 mm | +7 mm | +3.5 mm |
 | 20 mm | +11 mm | +5.5 mm |
 
+So polyamide clamps (Konni type) on a 20 × 20 boom want **+5.5 mm on every element**,
+radiator included. The clamps do not sidestep the correction; they halve it.
+
 DK7ZB does not say whether these are round or square booms, and his own antennas use
 square 15×15 or 20×20. SM5BSZ finds a square boom behaves like a round one ~18% larger,
 so if the table is for round booms a 20×20 square would want somewhat more than +11 mm.
-Another reason to use the clamps and sidestep the question.
 
 The correction is *added* — a metal boom makes an element behave electrically short, so
-an uncorrected build resonates high.
+an uncorrected build resonates high. Uniformly lengthening all ten elements moves the
+array at **1.025 MHz per mm** of full length, linear over at least ±6 mm, so the 5.5 mm
+is worth 5.6 MHz. Lengthening the radiator alone moves it at only 0.43 MHz/mm — enough
+to mislead anyone tuning by SWR on the driven element.
 
 At 70 cm this is not a detail: +11 mm on a 280 mm director is 3.9%, about 17 MHz at
 435 MHz. The same boom on 2 m costs only ~4 mm, or 0.4% — which is why a mounting error
 that is invisible on 2 m ruins a 70 cm antenna.
-
-The screw must not form a metal path from element to boom. In the clamp method it
-fastens the element into the plastic body only.
 
 ## The DK7ZB match — his own figures
 
