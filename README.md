@@ -175,6 +175,20 @@ NanoVNA sweeps, all taken indoors:
 | `meas-uncorrected-noscrews.png` | same, every mounting screw removed, 438.40 MHz |
 | `meas-corrected.png` | +5.5 mm, 433.675 MHz, 51.15 + 2.57j |
 
+On the pole, measured at the radio end of the feedline. The dualband is the old antenna
+mounted 0.8–1 m from the 10-el on the same pole.
+
+| File | Sweep | Marker | SWR at radio |
+|:--|:--|:--|--:|
+| `dk7zb-70cm-10el-with-20m-ecoflex10.jpg` | 10-el, 20 m Ecoflex 10, 418–448 | 433 MHz, 36.93 - 4.19j | 1.37 |
+| `dk7zb-dualband-2m-with-17m-h155.jpg` | dualband, 17 m H155, 140–150 | 145 MHz, 51.74 + 18.66j | 1.44 |
+| `dk7zb-dualband-70cm-with-17m-h155.jpg` | dualband, 17 m H155, 418–448 | 433 MHz, 51.5 + 7.88j | 1.16 |
+
+Cable loss masks the antenna. Taking datasheet loss (Ecoflex 10 ~1.8 dB, H155 ~3 dB at
+433 MHz) puts the 10-el at ~1.6 at its feedpoint against 1.12 indoors; the loss itself is
+not measured. The 10-el sweep ripples with a period close to what 20 m of Ecoflex 10 gives,
+pointing at a second reflection near the radio end.
+
 Two things this does **not** establish:
 
 - The skirts are steeper than modelled (430: 1.51 against 1.25; 438: 1.85 against 1.2)
